@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Fetrue</string>
+    <string name="title_activity_main">Fetrue</string>
+    <string name="package_name">com.fetrue.app</string>
+    <string name="custom_url_scheme">com.fetrue.app</string>
+</resources>

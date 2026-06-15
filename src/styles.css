@@ -1,0 +1,103 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-sky: var(--sky);
+  --color-orange: var(--orange);
+  --color-amber: var(--amber);
+  --color-cream: var(--cream);
+
+  --color-primary: var(--navy);
+  --color-primary-foreground: var(--navy-foreground);
+  --color-accent: var(--orange);
+  --color-accent-foreground: oklch(1 0 0);
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 10px 40px -10px color-mix(in oklab, var(--navy) 25%, transparent);
+  --shadow-glow: 0 0 60px -10px color-mix(in oklab, var(--orange) 50%, transparent);
+
+  --gradient-warm: linear-gradient(135deg, var(--orange), var(--amber));
+  --gradient-trust: linear-gradient(135deg, var(--navy), var(--sky));
+  --gradient-dawn: linear-gradient(160deg, var(--cream), oklch(0.96 0.04 70));
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.985 0.012 80);
+  --foreground: oklch(0.20 0.06 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.20 0.06 260);
+  --muted: oklch(0.95 0.01 80);
+  --muted-foreground: oklch(0.50 0.03 260);
+  --border: oklch(0.90 0.02 80);
+  --ring: oklch(0.65 0.18 50);
+
+  --navy: oklch(0.30 0.13 260);
+  --navy-foreground: oklch(0.98 0.01 80);
+  --sky: oklch(0.68 0.15 235);
+  --orange: oklch(0.68 0.18 45);
+  --amber: oklch(0.82 0.16 80);
+  --cream: oklch(0.97 0.025 85);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body { background-color: var(--color-background); color: var(--color-foreground); font-family: var(--font-body); -webkit-tap-highlight-color: transparent; }
+  body { overscroll-behavior-y: none; }
+  h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@utility text-gradient-warm {
+  background: var(--gradient-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-trust {
+  background: var(--gradient-trust);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gradient-warm { background: var(--gradient-warm); }
+@utility bg-gradient-trust { background: var(--gradient-trust); }
+@utility bg-gradient-dawn { background: var(--gradient-dawn); }
+@utility shadow-soft { box-shadow: var(--shadow-soft); }
+@utility shadow-glow { box-shadow: var(--shadow-glow); }
+
+@keyframes flame {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50% { transform: scale(1.08) rotate(2deg); }
+}
+@utility animate-flame { animation: flame 2.4s ease-in-out infinite; }
+
+@keyframes float-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@utility animate-float-in { animation: float-in 0.5s ease-out both; }
